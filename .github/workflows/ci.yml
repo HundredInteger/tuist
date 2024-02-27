@@ -17,6 +17,9 @@ jobs:
 
     - name: Install Tuist 🛠
       run: mise install tuist
+      
+    - name: fetch Xcode project with Tuist
+      run: tuist fetch
 
     - name: Generate Xcode project with Tuist
       run: tuist generate
