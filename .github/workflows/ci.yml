@@ -33,8 +33,8 @@ jobs:
           ${{ runner.os }}-tuist-
           
     - name: Install xcpretty
-      run: gem install xcpretty --user-install
+      run: sudo gem install xcpretty
 
     - name: Start xcode build and test 🛠
       run: |
-        set -o pipefail && xcodebuild clean test -scheme App-DEV -destination '${{ matrix.destination }}' | xcpretty
+        set -o pipefail && xcodebuild clean test -scheme "$SCHEME" -destination '${{ matrix.destination }}' | xcpretty --color
