@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install Tuist 🛠
-      run: bash <(curl -Ls https://install.tuist.io)
+      run: mise install tuist
 
     - name: Generate Xcode project with Tuist
       run: tuist generate
