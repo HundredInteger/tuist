@@ -11,6 +11,7 @@ jobs:
     runs-on: macos
     strategy:
       matrix:
+        scheme: [App, Features, Common, Core]
         destination: ['platform=iOS Simulator,name=iPhone 14 Pro,OS=14.0', 'platform=iOS Simulator,name=iPhone 13,OS=latest']
     steps:
     - uses: actions/checkout@v2
@@ -40,4 +41,4 @@ jobs:
 
     - name: Start xcode build and test 🛠
       run: |
-        set -o pipefail && xcodebuild clean test -scheme "$SCHEME" -destination '${{ matrix.destination }}' | xcpretty --color
+        set -o pipefail && xcodebuild clean test -scheme ${{ matrix.scheme }} -destination '${{ matrix.destination }}' | xcpretty --color
