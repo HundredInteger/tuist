@@ -37,5 +37,5 @@ jobs:
 
     - name: Start xcode build and test 🛠
       run: |
-        set -o pipefail && xcodebuild clean build -scheme TuistTest -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=14.0' | xcpretty --color
+        set -o pipefail && xcodebuild clean build -scheme TuistTest -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.2' | xcpretty --color
 
