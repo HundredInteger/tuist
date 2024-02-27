@@ -40,4 +40,4 @@ jobs:
 
     - name: Start xcode build and test 🛠
       run: |
-        set -o pipefail && xcodebuild clean test -scheme Projects -destination '${{ matrix.destination }}' | xcpretty --color
+        set -o pipefail && xcodebuild clean test -scheme tuistTest-DEV -destination '${{ matrix.destination }}' | xcpretty --color
