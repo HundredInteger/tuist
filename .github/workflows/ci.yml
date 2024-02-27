@@ -32,7 +32,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-tuist-
     - name: Install xcpretty
-      run: sudo gem install xcpretty
+      run: gem install xcpretty
 
     - name: Start xcode build and test 🛠
       run: |
