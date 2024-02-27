@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos
+    strategy:
+      matrix:
+        destination: ['platform=iOS Simulator,name=iPhone 14 Pro,OS=14.0', 'platform=iOS Simulator,name=iPhone 13,OS=latest']
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Tuist 🛠
+      run: bash <(curl -Ls https://install.tuist.io)
+
+    - name: Generate Xcode project with Tuist
+      run: tuist generate
+
+    - name: Cache Tuist Dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.tuist
+        key: ${{ runner.os }}-tuist-${{ hashFiles('**/Project.swift') }}
+        restore-keys: |
+          ${{ runner.os }}-tuist-
+    - name: Install xcpretty
+      run: sudo gem install xcpretty
+
+    - name: Start xcode build and test 🛠
+      run: |
+        set -o pipefail && xcodebuild clean test -scheme App-Dev -destination '${{ matrix.destination }}' | xcpretty
