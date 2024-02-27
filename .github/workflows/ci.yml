@@ -31,8 +31,9 @@ jobs:
         key: ${{ runner.os }}-tuist-${{ hashFiles('**/Project.swift') }}
         restore-keys: |
           ${{ runner.os }}-tuist-
+          
     - name: Install xcpretty
-      run: gem install xcpretty
+      run: gem install xcpretty --user-install
 
     - name: Start xcode build and test 🛠
       run: |
