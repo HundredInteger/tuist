@@ -37,4 +37,4 @@ jobs:
 
     - name: Start xcode build and test 🛠
       run: |
-        set -o pipefail && xcodebuild clean test -scheme App -destination '${{ matrix.destination }}' | xcpretty
+        set -o pipefail && xcodebuild clean test -scheme App-DEV -destination '${{ matrix.destination }}' | xcpretty
