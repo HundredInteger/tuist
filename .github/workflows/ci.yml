@@ -28,14 +28,9 @@ jobs:
         key: ${{ runner.os }}-tuist-${{ hashFiles('**/Project.swift') }}
         restore-keys: |
           ${{ runner.os }}-tuist-
-          
-    - name: Set GEM_HOME
-      run: echo "GEM_HOME=$HOME/.gem" >> $GITHUB_ENV
       
-    - name: Install xcpretty
-      run: gem install xcpretty
 
     - name: Start xcode build and test 🛠
       run: |
-        set -o pipefail && xcodebuild clean build -scheme TuistTest -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.2' | xcpretty --color
+        set -o pipefail && xcodebuild clean build -scheme TuistTest -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.2'
 
