@@ -9,9 +9,6 @@ on:
 jobs:
   build:
     runs-on: macos
-    strategy:
-      matrix:
-        destination: ['platform=iOS Simulator,name=iPhone 14 Pro,OS=14.0']
     steps:
     - uses: actions/checkout@v2
 
@@ -40,5 +37,5 @@ jobs:
 
     - name: Start xcode build and test 🛠
       run: |
-        set -o pipefail && xcodebuild clean build -scheme TuistTest -destination '${{ matrix.destination }}' | xcpretty --color
+        set -o pipefail && xcodebuild clean build -scheme TuistTest -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=14.0' | xcpretty --color
 
